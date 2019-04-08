@@ -1,0 +1,56 @@
+{
+  "content": [
+    {
+      "id": 11,
+      "name": "合作方管理",
+      "url": "#",
+      "sequence": 11,
+      "subMenu": [
+        {
+          "id": 12,
+          "name": "客户管理",
+          "url": "client",
+          "sequence": 1,
+          "subMenu": null
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "账户管理",
+      "url": "#",
+      "sequence": 20,
+      "subMenu": [
+        {
+          "id": 22,
+          "name": "代理商账户",
+          "url": "proxy",
+          "sequence": 1,
+          "subMenu": null
+        },
+        {
+          "id": 23,
+          "name": "渠道商账户",
+          "url": "distributor",
+          "sequence": 2,
+          "subMenu": null
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "name": "订单管理",
+      "url": "#",
+      "sequence": 30,
+      "subMenu": [
+        {
+          "id": 9,
+          "name": "渠道商订单",
+          "url": "distributorOrder",
+          "sequence": 1,
+          "subMenu": null
+        }
+      ]
+    }
+  ]
+}
