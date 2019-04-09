@@ -30,7 +30,7 @@
         <div>
           <el-tabs type='border-card'  @tab-remove="removeTab" v-model="activeTab"  @tab-click="changePages">
             <el-tab-pane :label='item.title' v-for="(item, index) in tabs" :key='item.name' :name='item.name' :closable="index!==0"></el-tab-pane>
-            <router-view v-if="isTrue"></router-view>
+            <router-view></router-view>
           </el-tabs>
         </div>
     </div>
@@ -45,14 +45,13 @@ export default {
   data () {
     return {
       isCollapse: false,
-      isTrue: true,
       activeTab: '1', // 必须和tabs中的name值相等，才能高亮显示
       defaultActive: '',
       items: [],
       tabs: [
         {
           title: '总览',
-          path: '/',
+          path: '/home',
           name: '1'
         }
       ],
@@ -93,7 +92,7 @@ export default {
       // console.log(key, keyPath)
     },
     _toPages (v1) {
-      let route = routes.options.routes[0].children
+      let route = routes.options.routes[1].children
       let tabs = this.tabs
       let bool = tabs.some(x => { return x.title === v1 })
       var path = ''
@@ -105,7 +104,7 @@ export default {
             path = tabs[i].path
           }
         }
-        this.$router.push({ path: '/' + path })
+        this.$router.push({ path: path })
         this.activeTab = tabIndex + ''
       } else {
         this.count = this.count + 1 + ''
@@ -117,15 +116,15 @@ export default {
         })
         tabs.push({ title: v1, path: pathArr[0].path, name: newTabIndex })
         this.activeTab = newTabIndex
-        this.$router.push({ path: '/' + pathArr[0].path })
+        this.$router.push({ path: pathArr[0].path })
       }
     },
     changePages (arg) {
       let name = arg.label
       if (name === '总览') {
-        this.$router.push({ path: '/' })
+        this.$router.push({ path: '/index' })
       } else {
-        let arr = routes.options.routes[0].children.filter(x => {
+        let arr = routes.options.routes[1].children.filter(x => {
           return x.hasOwnProperty('meta')
         }).filter(x => {
           return x.meta.name === name
@@ -136,7 +135,7 @@ export default {
         })
         this.defaultActive = arr1.filter(x => x.name === arr[0].meta.name)[0].id + ''
         let path = arr[0].path
-        this.$router.push({ path: '/' + path })
+        this.$router.push({ path: path })
       }
     },
     removeTab (target) {
@@ -144,10 +143,10 @@ export default {
       let newTab = this.tabs.filter(x => { return x.name !== target })
       this.tabs = newTab
       if (target === this.activeTab) {
-        this.$router.push({ path: '/' + this.tabs[index - 1].path })
+        this.$router.push({ path: this.tabs[index - 1].path })
         this.activeTab = this.tabs[index - 1].name
       } else {
-        this.$router.push({ path: '/' + this.tabs[index].path })
+        this.$router.push({ path: this.tabs[index].path })
         this.activeTab = this.tabs[index].name
       }
     },
@@ -175,6 +174,19 @@ export default {
   filters: {}
 }
 </script>
+<style>
+.main .el-tabs__content {
+  height: calc(100vh - 195px);
+  overflow: hidden;
+}
+/* .main .el-tabs__content::-webkit-scrollbar {
+  display: none
+}
+.main .el-tabs__content{
+  -ms-overflow-style: none;
+} */
+</style>
+
 <style lang="sass" scoped>
 .header
   height: 100px;

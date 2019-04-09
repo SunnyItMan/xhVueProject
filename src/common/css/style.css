@@ -1,0 +1,19 @@
+/* 公共样式，每个组件须引入以下两个类名，已达到隐藏滚动条的功能 */
+.container{
+  width: 100%;
+  height: calc(100vh - 155px);
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+.inner {
+  position: absolute;
+  left: -5px;
+  top: 0px;
+  width: 100%;
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-left: 17px;
+  padding-right: 10px
+}

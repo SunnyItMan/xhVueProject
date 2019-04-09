@@ -5,38 +5,49 @@ Vue.use(Router)
 export const routes = [
   {
     path: '/',
+    component: () => import('../components/login')
+  },
+  {
+    path: '/index',
     component: () => import('../components/index'),
     children: [
       {
-        path: 'orgManage',
+        path: '/home',
+        meta: {
+          name: '总览'
+        },
+        component: () => import('../components/home/home.vue')
+      },
+      {
+        path: '/orgManage',
         meta: {
           name: '客户管理'
         },
         component: () => import('../components/orgManage/orgList.vue')
       },
       {
-        path: 'business/proxy',
+        path: '/business/proxy',
         meta: {
           name: '代理商账户'
         },
         component: () => import('../components/business/proxy.vue')
       },
       {
-        path: 'business/distributor',
+        path: '/business/distributor',
         meta: {
           name: '渠道商账户'
         },
         component: () => import('../components/business/distributor.vue')
       },
       {
-        path: 'order/order',
+        path: '/order/order',
         meta: {
           name: '渠道商订单'
         },
         component: () => import('../components/order/order.vue')
       },
       {
-        path: 'order/orderDetails',
+        path: '/order/orderDetails',
         component: () => import('../components/order/orderDetails.vue')
       }
     ]
@@ -47,8 +58,8 @@ const router = new Router({
   routes
 })
 router.beforeEach((to, from, next) => {
-  if (to.matched.length === 0) {
-    from.name ? next({name: from.name}) : next('/')
+  if (to.matched.length === 0) { // 如果未匹配到路由
+    from.name ? next({name: from.name}) : next('/') // 如果上级也为匹配到路由跳转登录，匹配到则转上级路由
   } else {
     next()
   }
