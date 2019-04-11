@@ -8,11 +8,11 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './common/css/style.css'
 import echarts from 'echarts'
 import store from './store/index'
-// import axios from 'axios'
 import './mock/mock'
-// import './../static/ue/ueditor/ueditor.parse'
-// import './../static/ue/ueditor/ueditor.config'
-// import './../static/ue/ueditor/lang/zh-cn/zh-cn.js'
+import '../static/utf8-jsp/ueditor.config'
+import '../static/utf8-jsp/ueditor.all.min'
+import '../static/utf8-jsp/ueditor.parse'
+import '../static/utf8-jsp/lang/zh-cn/zh-cn'
 Vue.prototype.echarts = echarts
 // Vue.prototype.$http = axios
 Vue.use(ElementUI, {size: 'small'})

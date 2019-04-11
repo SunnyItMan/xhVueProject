@@ -1,7 +1,7 @@
 <template>
   <div>this is proxy
     <div id='ueditor' type='text/plain'></div>
-    <pagination :pager='pager'></pagination>
+    <!-- <pagination :pager='pager'></pagination> -->
   </div>
 </template>
 <script>
@@ -38,11 +38,11 @@ export default {
     }
   },
   mounted () {
-    // const that = this
-    // this.ue = UE.getEditor('ueditor', this.config)
-    // this.ue.addListener('ready', function () {
-    //   that.ue.setContent(that.defaultMsg)
-    // })
+    const that = this
+    this.ue = window.UE.getEditor('ueditor', this.config)
+    this.ue.addListener('ready', function () {
+      that.ue.setContent(that.defaultMsg)
+    })
   },
   components: {
     pagination
