@@ -57,7 +57,7 @@ const router = new Router({
   mode: 'hash',
   routes
 })
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => { // 此处还可以用来判断用户是否登录
   if (to.matched.length === 0) { // 如果未匹配到路由
     from.name ? next({name: from.name}) : next('/') // 如果上级也为匹配到路由跳转登录，匹配到则转上级路由
   } else {

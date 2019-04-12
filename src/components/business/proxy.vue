@@ -32,10 +32,11 @@ export default {
     },
     getUEContent () {
       return this.ue.getContent()
-    },
-    destroyed () {
-      this.us.destroy()
     }
+  },
+  destroyed () {
+    // 解决第二次进来页面时富文本不显示问题
+    this.ue.destroy()
   },
   mounted () {
     const that = this

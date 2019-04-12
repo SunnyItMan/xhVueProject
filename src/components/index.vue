@@ -68,7 +68,7 @@ export default {
   methods: {
     getMenu () {
       api('../json/menu.json', 'get').then(res => {
-        console.log('abc', res)
+        // console.log('abc', res)
         this.items = res.content
         let curTab = this.$route.meta.name
         if (curTab) {
@@ -122,7 +122,7 @@ export default {
     changePages (arg) {
       let name = arg.label
       if (name === '总览') {
-        this.$router.push({ path: '/index' })
+        this.$router.push({ path: '/home' })
       } else {
         let arr = routes.options.routes[1].children.filter(x => {
           return x.hasOwnProperty('meta')
@@ -152,12 +152,11 @@ export default {
     },
     getTab () {
       let curTab = this.$route.meta.name
-      // console.log(curTab)
       if (curTab) {
         this.tabs.push({
           title: curTab,
           name: '2',
-          path: this.$route.path.slice(1)
+          path: this.$route.path.slice(0)
         })
         this.activeTab = '2'
       }
@@ -166,8 +165,8 @@ export default {
   watch: {
     '$route.path': {
       handler (path) {
-        console.log('path:')
-        console.log(path)
+        // console.log('path:')
+        // console.log(path)
       }
     }
   },
